@@ -43,14 +43,28 @@ print("\nRecommended Products:")
 for name, match_count in recommendations:
     print(f"- {name} ({match_count} match(es))")
 
-# 1. What core operations did you use (e.g., intersections, loops)? Why?
-#    - I used set intersections to quickly compare tags because sets make membership checks efficient.
-#    - I used loops to go through all products and count the number of matches.
-#    - Sorting was used to rank products so the ones that match best appear first.
-#
-# 2. How might this code change if you had 1000+ products?
-#    - The same logic works, but efficiency matters more at scale.
-#    - Set operations remain fast (O(1) average per check).
-#    - Sorting is O(n log n), which is still efficient for thousands of products.
-#    - For very large catalogs (millions of products), a database or search index would be better.
+
+
+"""
+Design Memo
+-----------
+
+For this assignment, I built a small recommendation program that matches what a customer likes
+with a list of products. Each product has tags like "eco-friendly" or "durable" that describe it.
+The customer inputs what they like, and the program scans for products that share the same tags.
+
+I found sets to actually be very convenient here because they make it easy to know if two sets contain common items. For each product,
+I also put the tags into a set. I then used the intersection operation (&) to know how
+many tags the product and the customer had in common. That gave me a number of matches.
+
+The program loops through each product and counts the number of matches.
+Then I ordered the results so that products with the most matches are listed first.
+This makes reading the output easier and more helpful to the customer.
+
+If there were over 1,000 products, the program would continue to work. It would possibly take a
+bit longer to run, but Python set operations and loops can handle that quantity. For really large
+catalogs, like millions of products, I would probably need to use a database or other faster
+searching methods, but for this project the direct approach is good enough.
+"""
+
 
